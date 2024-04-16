@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+private:
+    int data1, data2, data3;
+
+public:
+    // Constructor to initialize member variables
+    Test(int d1 = 0, int d2 = 0, int d3 = 0) : data1(d1), data2(d2), data3(d3) {}
+
+    // Function to get data
+    void get_data(int d1) {
+        data1 = d1;
+    }
+
+    // Overloaded function to get data with two arguments
+    void get_data(int d1, int d2) {
+        data1 = d1;
+        data2 = d2;
+    }
+
+    // Overloaded function to get data with three arguments
+    void get_data(int d1, int d2, int d3) {
+        data1 = d1;
+        data2 = d2;
+        data3 = d3;
+    }
+
+    // Function to display data
+    void show_data() {
+        cout << "Data 1: " << data1 << endl;
+        cout << "Data 2: " << data2 << endl;
+        cout << "Data 3: " << data3 << endl;
+        cout << endl;
+    }
+};
+
+int main() {
+    // Creating three objects of the Test class
+    Test obj1, obj2, obj3;
+
+    // Invoking get_data() with one argument for object 1
+    obj1.get_data(10);
+
+    // Invoking get_data() with two arguments for object 2
+    obj2.get_data(20, 30);
+
+    // Invoking get_data() with three arguments for object 3
+    obj3.get_data(40, 50, 60);
+
+    // Displaying values of all objects
+    cout << "Object 1:" << endl;
+    obj1.show_data();
+
+    cout << "Object 2:" << endl;
+    obj2.show_data();
+
+    cout << "Object 3:" << endl;
+    obj3.show_data();
+
+    return 0;
+}
