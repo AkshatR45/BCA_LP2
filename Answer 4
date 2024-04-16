@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+class BCA_OOPS {
+private:
+    int var1;
+    int var2;
+
+public:
+    // Default constructor
+    BCA_OOPS() : var1(0), var2(0) {}
+
+    // Parameterized constructor
+    BCA_OOPS(int v1, int v2) : var1(v1), var2(v2) {}
+
+    // Function using 'this' pointer to assign values
+    void assignValues(int v1, int v2) {
+        this->var1 = v1;
+        this->var2 = v2;
+    }
+
+    // Function to display values (non-member function)
+    friend void displayValues(const BCA_OOPS& obj);
+
+    // Function to copy data from one object to another
+    void copyData(const BCA_OOPS& obj) {
+        this->var1 = obj.var1;
+        this->var2 = obj.var2;
+    }
+
+    // Function to decrement values based on conditions
+    void decrementValues() {
+        if (var1 >= 0 && var1 <= 10)
+            var1 -= 2;
+        else if (var1 > 10)
+            var1 -= 5;
+
+        if (var2 >= 0 && var2 <= 10)
+            var2 -= 2;
+        else if (var2 > 10)
+            var2 -= 5;
+    }
+};
+
+// Function to display values (non-member function)
+void displayValues(const BCA_OOPS& obj) {
+    cout << "var1: " << obj.var1 << endl;
+    cout << "var2: " << obj.var2 << endl;
+}
+
+int main() {
+    // Initializing member variables through default constructor
+    BCA_OOPS obj1;
+
+    // Displaying values through non-member function
+    cout << "Values of obj1 (Default constructor):" << endl;
+    displayValues(obj1);
+
+    // Initializing member variables through parameterized constructor
+    BCA_OOPS obj2(15, 8);
+
+    // Displaying values through non-member function
+    cout << "\nValues of obj2 (Parameterized constructor):" << endl;
+    displayValues(obj2);
+
+    // Using 'this' pointer inside member function
+    obj1.assignValues(5, 12);
+
+    // Displaying values through non-member function
+    cout << "\nValues of obj1 after using assignValues() function:" << endl;
+    displayValues(obj1);
+
+    // Copying data from obj1 to obj3
+    BCA_OOPS obj3;
+    obj3.copyData(obj1);
+
+    // Displaying values of obj3
+    cout << "\nValues of obj3 after copying data from obj1:" << endl;
+    displayValues(obj3);
+
+    // Decrementing values
+    obj1.decrementValues();
+    obj3.decrementValues();
+
+    // Displaying values after decrementing
+    cout << "\nValues of obj1 after decrementing:" << endl;
+    displayValues(obj1);
+
+    cout << "\nValues of obj3 after decrementing:" << endl;
+    displayValues(obj3);
+
+    return 0;
+}
